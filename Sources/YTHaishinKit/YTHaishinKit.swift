@@ -177,8 +177,8 @@ extension YTHaishinKit {
     private static func createLiveStream(
         title: String,
         description: String,
-        resolution: String = "720p",
-        frameRate: String = "30fps",
+        resolution: String = "variable",
+        frameRate: String = "variable",
         accessToken: String
     ) async throws -> [String: Any] {
         var components = URLComponents(string: "https://www.googleapis.com/youtube/v3/liveStreams")!
@@ -227,7 +227,6 @@ extension YTHaishinKit {
         privacyStatus: String,
         accessToken: String
     ) async throws -> [String: Any] {
-        let iso = ISO8601DateFormatter().string(from:)
         var components = URLComponents(string: "https://www.googleapis.com/youtube/v3/liveBroadcasts")!
         components.queryItems = [
             URLQueryItem(name: "part", value: "snippet,status")
